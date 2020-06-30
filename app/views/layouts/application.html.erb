@@ -10,6 +10,24 @@
   </head>
 
   <body>
+    <header>
+      <h1>Bookers</h1>
+      <nav>
+        <ul>
+          <% if user_signed_in? %>
+            <li><%= link_to 'home', user_path(current_user) %></li>
+            <li><%= link_to 'users', users_path %></li>
+            <li><%= link_to 'books', books_path %></li>
+            <li><%= link_to 'log out', destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li>home</li>
+            <li>about</li>
+            <li><%= link_to 'sign up', new_user_registration_path %></li>
+            <li><%= link_to 'log in', new_user_session_path %></li>
+          <% end %>
+         </ul>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
